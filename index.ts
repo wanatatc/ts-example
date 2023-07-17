@@ -151,6 +151,39 @@
 // car.drive();
 // console.log("car.fuelPrice(100)", car.fuelPrice(100));
 
+/**
+ * การประกาศ Index Signature
+ *
+ * เป็นประโยชน์สำหรับการกำหนดชนิดข้อมูลให้กับ Object ที่มี property ที่ไม่ทราบชื่อล่วงหน้า
+ * โดยใช้เครื่องหมาย [] (square brackets) ครอบชื่อ property ที่ไม่ทราบชื่อไว้
+ */
+
+// type PersonData = {
+//   [key: number]: string;
+// };
+
+// let personData: PersonData = {
+//   1: "John Doe",
+//   2: "Jane Doe",
+// };
+
+// console.log("personData", personData);
+// console.log("personData[1]", personData[1]);
+
+// type AnimalData = {
+//   [key: string]: string;
+//   name: string;
+// };
+
+// let animalData: AnimalData = {
+//   //name: "Cat",
+//   color: "Black",
+// };
+
+// console.log("animalData", animalData);
+// console.log("animalData.name", animalData.name);
+// console.log("animalData.color", animalData.color);
+
 // E. Union และ Intersect types
 
 /**
