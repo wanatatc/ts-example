@@ -63,29 +63,6 @@
 
 // console.log("🚀 ~ file: index.ts:61 ~ isSingle", isSingle);
 
-/**
- * ตัวแปรที่มีมากกว่า 1 ประเภทข้อมูล (Union Types)
- *
- * ใช้กำหนดประเภทข้อมูลให้กับตัวแปรที่มีมากกว่า 1 ประเภทข้อมูล โดยใช้เครื่องหมาย | (pipe) คั่นระหว่างประเภทข้อมูล
- * เช่น ตัวแปรที่เป็น string หรือ number เขียนได้ดังนี้ string | number
- * หรือ ตัวแปรที่เป็น string หรือ number หรือ undifined เขียนได้ดังนี้ string | number | undifined
- */
-
-let mixed: string | number | boolean = "John Doe";
-console.log("🚀 ~ file: index.ts:75 ~ mixed", mixed);
-
-mixed = 30;
-
-console.log("🚀 ~ file: index.ts:78 ~ mixed", mixed);
-
-let mixedUndefined: string | number | boolean | undefined = undefined;
-
-console.log("🚀 ~ file: index.ts:82 ~ mixedUndefined", mixedUndefined);
-
-mixedUndefined = "John Doe";
-
-console.log("🚀 ~ file: index.ts:85 ~ mixedUndefined", mixedUndefined);
-
 // B. การกำหนดประเภทโดยค่า (Type Inference)
 
 // let firstName = "John";
@@ -120,6 +97,127 @@ console.log("🚀 ~ file: index.ts:85 ~ mixedUndefined", mixedUndefined);
 
 // D. การประกาศชนิดข้อมูล (Interfaces and type annotations)
 
-// E. Arrays และ tuples
-// F. Union และ Intersect types
-// G. การอ้างอิง Type (Type Aliases)
+// interface Person {
+//     name: string;
+//     age: number;
+//     isSingle: boolean;
+//     hobbies: string[];
+// }
+
+// let person: Person = {
+//     name: "John Doe",
+//     age: 30,
+//     hobbies: ["Sports", "Cooking"],
+// };
+
+// console.log("🚀 ~ file: index.ts:92 ~ person", person);
+
+// type Person = {
+//     name: string;
+//     age: number;
+//     isSingle: boolean;
+//     hobbies: string[];
+// };
+
+// let person: Person = {
+//     name: "John Doe",
+//     age: 30,
+//     hobbies: ["Sports", "Cooking"],
+// };
+
+// E. Union และ Intersect types
+
+/**
+ * ตัวแปรที่มีมากกว่า 1 ประเภทข้อมูล (Union Types)
+ *
+ * ใช้กำหนดประเภทข้อมูลให้กับตัวแปรที่มีมากกว่า 1 ประเภทข้อมูล โดยใช้เครื่องหมาย | (pipe) คั่นระหว่างประเภทข้อมูล
+ * หรือ ตัวแปรที่เป็น string หรือ number หรือ undifined เขียนได้ดังนี้ string | number | undifined
+ */
+
+// let mixedUndefined: string | number | boolean | undefined = undefined;
+
+// console.log("🚀 ~ file: index.ts:82 ~ mixedUndefined", mixedUndefined);
+
+// mixedUndefined = "John Doe";
+
+// console.log("🚀 ~ file: index.ts:85 ~ mixedUndefined", mixedUndefined);
+
+/**
+ * การรวมประเภทข้อมูล (Intersect Types)
+ *
+ * ใช้รวมประเภทข้อมูลที่มีมากกว่า 1 ประเภทข้อมูลเข้าไว้ด้วยกัน โดยใช้เครื่องหมาย & (ampersand) คั่นระหว่างประเภทข้อมูล
+ */
+
+// interface Person {
+//   name: string;
+//   age: number;
+// }
+
+// interface Employee {
+//   id: number;
+//   department: string;
+// }
+
+// type Person = {
+//     name: string;
+//     age: number;
+// };
+
+// type Employee = {
+//     id: number;
+//     department: string;
+// };
+
+// interface PersonEmployee = Person & Employee;
+
+// let personEmployee: PersonEmployee = {
+//     name: "John Doe",
+//     age: 30,
+//     id: 1,
+//     department: "IT",
+// };
+
+// console.log("🚀 ~ file: index.ts:169 ~ personEmployee:", personEmployee)
+
+// F. การอ้างอิง Type (Type Aliases)
+
+/**
+ * การอ้างอิง Type (Type Aliases)
+ *
+ * ใช้กำหนดประเภทข้อมูลให้กับตัวแปร จาก type ที่เรากำหนดไว้
+ */
+
+// type ID = number;
+
+// type Name = string;
+
+// type Person = {
+//   id: ID;
+//   name: Name;
+//   age: number;
+// };
+
+// let person: Person = {
+//   id: 1,
+//   name: "John Doe",
+//   age: 30,
+// };
+
+// console.log("🚀 ~ file: index.ts:200 ~ person", person);
+
+// type Point = {
+//   x: number;
+//   y: number;
+// };
+
+// type Rectangle = {
+//   topLeft: Point;
+//   bottomRight: Point;
+// };
+
+// const rectangle: Rectangle = {
+//   topLeft: {x: 0, y: 0},
+//   bottomRight: {x: 100, y: 100},
+// };
+
+// console.log("🚀 ~ file: index.ts:215 ~ rectangle", rectangle);

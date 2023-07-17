@@ -4,6 +4,5 @@
 - [ ] B. การกำหนดประเภทโดยค่า (Type Inference)
 - [ ] C. ใช้งานกับฟังก์ชันและพารามิเตอร์
 - [ ] D. การประกาศชนิดข้อมูล (Interfaces and type annotations)
-- [ ] E. Arrays และ tuples
-- [ ] F. Union และ Intersect types
-- [ ] G. การอ้างอิง Type (Type Aliases)
+- [ ] E. Union และ Intersect types
+- [ ] F. การอ้างอิง Type (Type Aliases)
