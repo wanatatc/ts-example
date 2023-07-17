@@ -45,35 +45,44 @@ enum Direction {
  * โดยใช้ typeof, instanceof, in หรือ ค่าตรรกศาสตร์ (truthiness)
  */
 
-// 1. ค่าตรรกศาสตร์ (truthiness)
+// 1. typeof
+
+function processValue(value: string | number) {
+  if (typeof value === "string") {
+    // หากค่า value เป็น string
+    console.log(value.toUpperCase());
+  } else {
+    // ถ้าไม่ใช่ string ให้ดำเนินการต่อโดยใช้ค่าเป็น number
+    console.log(value.toFixed(2));
+  }
+}
+
+// 2. instanceof // ใช้กับ class หรือ interface -- ละไว้ เพราะไม่ได้ใช้ class
+
+// 3. in
 
 /**
- * หากค่าเป็น :
- *     0
- *     NaN
- *     "" (the empty string)
- *     0n (the bigint version of zero)
- *     null
- *     undefined
- *
- * จะถูกเป็นค่าเท็จ (falsy) ทั้งหมด
+ * ใช้เช็คว่า property นั้นมีอยู่ใน object หรือไม่
  */
+type Fish = {swim: () => void};
+type Bird = {fly: () => void};
 
-const numUsersOnline = 0;
+function move(animal: Fish | Bird) {
+  if ("swim" in animal) {
+    // ถ้ามี property swim ใน animal
+    return animal.swim();
+  }
 
-if (numUsersOnline) {
-  console.log(`There are ${numUsersOnline} online now!`);
-} else {
-  console.log("Nobody's here. :(");
+  return animal.fly();
 }
 
-const textInput = "";
+let animal: Fish = {
+  swim: () => {
+    console.log("swim swim swim");
+  },
+};
 
-if (textInput) {
-  console.log(`You entered: ${textInput}`);
-} else {
-  console.log("You didn't enter anything.");
-}
+move(animal);
 
 // D. Nullable types and optional properties
 // E. Type narrowing
