@@ -24,7 +24,7 @@ enum Direction {
 // }
 
 // const value = Direction.Up;
-// console.log("🚀 ~ file: index.ts:9 ~ value:", value);
+// console.log("value:", value);
 
 // B. การระบุชนิดข้อมูล (Type assertions)
 /**
@@ -47,6 +47,10 @@ enum Direction {
 
 // 1. typeof
 
+/**
+ * ใช้เช็คชนิดข้อมูล โดยใช้ typeof กับชนิดข้อมูลที่เป็น primitive type
+ */
+
 function processValue(value: string | number) {
   if (typeof value === "string") {
     // หากค่า value เป็น string
@@ -64,6 +68,7 @@ function processValue(value: string | number) {
 /**
  * ใช้เช็คว่า property นั้นมีอยู่ใน object หรือไม่
  */
+
 type Fish = {swim: () => void};
 type Bird = {fly: () => void};
 
@@ -84,5 +89,65 @@ let animal: Fish = {
 
 move(animal);
 
+// 4. User-defined type guards
+
+/**
+ * หากต้องการเช็ค type ที่เราสร้างเอง ให้ทำการสร้างฟังก์ชันสำหรับเช็คชนิดข้อมูลนั้น
+ */
+
+type Person = {
+  name: string;
+  age: number;
+};
+
+function isPerson(obj: any): obj is Person {
+  return obj.name !== undefined && obj.age !== undefined;
+}
+
+function printPersonInfo(obj: Person | string) {
+  if (isPerson(obj)) {
+    console.log(`Name: ${obj.name}, Age: ${obj.age}`);
+  } else {
+    console.log(obj);
+  }
+}
+
+printPersonInfo({name: "John", age: 20});
+printPersonInfo("Hello world");
+
 // D. Nullable types and optional properties
-// E. Type narrowing
+
+/**
+ * การกำหนดให้ตัวแปร หรือ property ของ object มีค่า null ได้
+ * สามารถทำได้โดยใช้ union type ระหว่างชนิดข้อมูลที่ต้องการกำหนด และค่า null
+ */
+
+let myNumber: number | null = 10;
+
+type MyObject = {
+  name: string;
+  age: number;
+  address: string | null;
+};
+
+let myObject1: MyObject = {
+  name: "John",
+  age: 20,
+  address: null,
+};
+
+// กรณีที่ต้องการกำหนดให้ property ของ object ไม่บังคับต้องมีค่า สามารถใช้ ? นำหน้าชื่อ property ได้
+// โดยเมื่อไม่มีค่า จะเป็น undefined
+
+type MyObject2 = {
+  name: string;
+  age: number;
+  address?: string; // address: string | undefined
+};
+
+let myObject2: MyObject2 = {
+  name: "John",
+  age: 20,
+};
+console.log("myObject:", myObject2);
+console.log("myObject.address:", myObject2.address);
