@@ -38,6 +38,14 @@ enum Direction {
 // const myCanvas = document.getElementById("main_canvas"); // จะได้ประเภท HTMLElement
 // const main = document.getElementById("main") as HTMLDivElement; // ระบุประเภทว่า เป็น div element
 
+// let testNumber: any = "123";
+// let testParsedNumber = parseInt(testNumber as string);
+
+// Using type assertion to tell TypeScript that myParsedNumber is a string
+// let myStringNumber = testParsedNumber as string; // myStringNumber is of type 'string'
+
+// console.log(typeof myStringNumber); // Output: string
+
 // C. การเช็คชนิดข้อมูล (Type guards)
 
 /**
